@@ -4,21 +4,18 @@ import styled from 'styled-components'
 
 const DynamicForm = (props) => {
     const onKeyPress = event => { if (event.which === 13) { event.preventDefault() } }
+    const Header = <FormHeader>{props.title}</FormHeader> 
 
     return (
         <Form onKeyPress={onKeyPress}>
-            { Header(props.title) }
+            { Header }
         </Form>
     )
 }
 
 export default DynamicForm
 
-const Header = title => {
-    return (<>
-        <FormHeader>{title}</FormHeader>
-    </>)
-}
+
 
 const FormHeader = styled.span`
 && 
