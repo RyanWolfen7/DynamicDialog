@@ -6,7 +6,6 @@ import FormDisplay from './FormDisplay/FormDisplay'
 function App() {
   return (
     <div className="App">
-      <h1>Hello World</h1>
       <FormDisplay/>
     </div>
   );

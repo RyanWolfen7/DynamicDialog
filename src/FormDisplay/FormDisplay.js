@@ -1,11 +1,18 @@
 import React, { useState, useEffect } from 'react'
 import DynamicForm from '../DynamicForm/DynamicForm'
+import { Schema }from './inputSchema'
 
 const FormDisplay = props => {
-    console.log('here')
+    const [form, setForm] = useState({ name: '' , address: { address: '', postcode: '', city: ''} } )
+    const schema = Schema(form) // Abstracted for use with redux/API JSON
     return (<>
         <DynamicForm
-            title={'Dynamic Form Test'}
+            title={'Name'}
+            fields={schema.name}
+        />
+        <DynamicForm
+            title={'Address'}
+            fields={schema.address}
         />
     </>)
 }
