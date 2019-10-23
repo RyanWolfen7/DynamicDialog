@@ -14,7 +14,7 @@ const DynamicForm = (props) => {
                     id={fields[item].field}
                     label={fields[item].fieldName}
                     defaultValue={fields[item].defaultValue}
-                    onChange={handleChange(fields[item].fieldName)}
+                    onChange={handleChange(fields[item].field)}
                 />
             </ Fragment>
         )}</>)
