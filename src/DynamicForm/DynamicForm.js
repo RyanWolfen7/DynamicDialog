@@ -1,32 +1,28 @@
-import React, { useState, useEffect, Fragment } from 'react'
-import { Radio, InputAdornment, Select, InputLabel, FormControl, TextField } from '@material-ui/core'
+import React, { Fragment } from 'react'
+import { TextField } from '@material-ui/core'
 import styled from 'styled-components'
 
 const DynamicForm = (props) => {
-    const {fields, title } = props
-    const Header = <FormHeader>{title}</FormHeader> 
+    const { fields, title, handleChange } = props
+    const Header = <FormHeader>{title}</FormHeader>
 
     const onKeyPress = event => { if (event.which === 13) { event.preventDefault() } }
     const createForms = () => {
-        if(fields) {
-            return Object.keys(fields).map(item => {
-                return (
-                    < Fragment key={item}> 
-                        <TextField
-                            id={fields[item].field}
-                            label={fields[item].fieldName}
-                            defaultValue={fields[item].defaultValue}
-                        />
-                    </ Fragment>
-                )
-            })
-        }
+        return (<>{fields && Object.keys(fields).map(item => item &&
+            < Fragment key={item}>
+                <TextField
+                    id={fields[item].field}
+                    label={fields[item].fieldName}
+                    defaultValue={fields[item].defaultValue}
+                    onChange={handleChange(fields[item].fieldName)}
+                />
+            </ Fragment>
+        )}</>)
     }
-    console.log(props)
     return (
         <Form onKeyPress={onKeyPress}>
-            { Header }
-            { createForms() }
+            {Header}
+            {createForms()}
         </Form>
     )
 }
